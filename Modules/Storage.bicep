@@ -15,7 +15,7 @@ resource storage 'Microsoft.Storage/storageAccounts@2023-05-01' = {
   sku: {
     name: skuName
   }
-  
+    
   kind: 'StorageV2'
   location: location
 }
@@ -37,5 +37,6 @@ resource vault 'Microsoft.KeyVault/vaults@2023-07-01' = {
     }
 
     tenantId: subscription().tenantId
+    accessPolicies: []
   }
 }
