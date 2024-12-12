@@ -1,7 +1,7 @@
 
 
 @description('Name of the storage account')
-param storageAccountName string = 'BicepStorageAccount'
+param storageAccountName string = 'biceptorageaccount'
 
 @description('Location of the resourcegroup')
 param location string
@@ -25,7 +25,7 @@ resource storage 'Microsoft.Storage/storageAccounts@2023-05-01' = {
 
 
 @description('Name of the Key Vault')
-param keyVaultName string = 'BicepKeyVault'
+param keyVaultName string = 'bicepkeyvault'
 
 resource vault 'Microsoft.KeyVault/vaults@2023-07-01' = {
   location: location
