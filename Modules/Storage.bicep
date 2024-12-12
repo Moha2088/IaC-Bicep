@@ -25,7 +25,7 @@ resource storage 'Microsoft.Storage/storageAccounts@2023-05-01' = {
 
 
 @description('Name of the Key Vault')
-param keyVaultName string = 'bicepkeyvault'
+param keyVaultName string = 'bicepkeyvaultfhu'
 
 resource vault 'Microsoft.KeyVault/vaults@2023-07-01' = {
   location: location
