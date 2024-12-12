@@ -11,3 +11,10 @@ module storage 'Modules/Storage.bicep' = {
     location: location
   }
 }
+
+module events 'Modules/Events.bicep' = {
+  name: 'Events'
+  params:{
+    location: location
+  }
+}
