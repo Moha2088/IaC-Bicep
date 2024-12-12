@@ -25,7 +25,7 @@ jobs:
               with:
                 inlineScript: |
                     az group create \
-                    --resource-group ${{ env.rg }}
+                    --resource-group ${{ env.rg }} \
                     --location ${{ env.rg-location }}
 
             - name: Deploy Bicep File
@@ -33,5 +33,5 @@ jobs:
               with:
                 inlineScript: |
                     az deployment group create \
-                    --resource-group ${{ env.rg }}
+                    --resource-group ${{ env.rg }} \
                     --template-file main.bicep
