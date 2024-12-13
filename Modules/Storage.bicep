@@ -24,7 +24,7 @@ resource storage 'Microsoft.Storage/storageAccounts@2023-05-01' = {
 
 
 @description('Name of the Key Vault')
-param keyVaultName string = 'bicepkeyvaultfhu'
+param keyVaultName string = 'bicepkeyvault${uniqueString(resourceGroup().id)}'
 
 resource vault 'Microsoft.KeyVault/vaults@2023-07-01' = {
   location: location
@@ -42,19 +42,19 @@ resource vault 'Microsoft.KeyVault/vaults@2023-07-01' = {
 
 
 @description('Name of the AppServicePlan')
-param servicePlanName string = 'bicepserviceplan'
+param servicePlanName string = 'bicepserviceplan${uniqueString(resourceGroup().id)}'
 
 resource servicePlan 'Microsoft.Web/serverfarms@2024-04-01' = {
   location: location
   name: servicePlanName
   sku: {
-    family: 'B1'
+    name: 'S1'
   }
   properties: {}
 }
 
 @description('Name of the function')
-param functionName string = 'bicepfunction'
+param functionName string = 'bicepfunction${resourceGroup().id}'
 
 resource function 'Microsoft.Web/sites@2024-04-01' = {
   name: functionName
