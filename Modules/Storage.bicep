@@ -48,8 +48,7 @@ resource servicePlan 'Microsoft.Web/serverfarms@2024-04-01' = {
   location: location
   name: servicePlanName
   sku: {
-    family: 'F1'
-    tier: 'Free'
+    family: 'B1'
   }
   properties: {}
 }
