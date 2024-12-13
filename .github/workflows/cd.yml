@@ -25,10 +25,11 @@ jobs:
         with:
           inlineScript: |
             az deployment group validate \
-            --resource-group ${{ env.rg }}
+            --resource-group ${{ env.rg }} \
             --template-file main.bicep
-            
+
     deploy:
+        needs: validate-template
         runs-on: ubuntu-latest
 
         steps:
