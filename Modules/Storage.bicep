@@ -1,7 +1,7 @@
 
 
 @description('Name of the storage account')
-param storageAccountName string = uniqueString('bstorage${uniqueString(resourceGroup().id)}')
+param storageAccountName string = 'bplan${uniqueString(resourceGroup().id)}'
 
 @description('Location of the resourcegroup')
 param location string
