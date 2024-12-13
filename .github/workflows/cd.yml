@@ -10,6 +10,24 @@ on:
     workflow_dispatch:
 
 jobs:
+    validate-template:
+      runs-on: ubuntu-latest
+
+      steps:
+      - uses: actions/checkout@v4
+      - name: Login to Azure
+        uses: azure/login@v2.2.0
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Validate Template
+        uses: azure/cli@v2.1.0
+        with:
+          inlineScript: |
+            az deployment group validate \
+            --resource-group ${{ env.rg }}
+            --template-file main.bicep
+            
     deploy:
         runs-on: ubuntu-latest
 
