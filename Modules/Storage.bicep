@@ -54,7 +54,7 @@ resource servicePlan 'Microsoft.Web/serverfarms@2024-04-01' = {
 }
 
 @description('Name of the function')
-param functionName string = 'bfunction${resourceGroup().id}'
+param functionName string = 'bfunction${uniqueString(resourceGroup().id)}'
 
 resource function 'Microsoft.Web/sites@2024-04-01' = {
   name: functionName
