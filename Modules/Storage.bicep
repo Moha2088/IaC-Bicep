@@ -48,7 +48,7 @@ resource servicePlan 'Microsoft.Web/serverfarms@2024-04-01' = {
   location: location
   name: servicePlanName
   sku: {
-    name: 'S1'
+    name: 'Y1'
   }
   properties: {}
 }
@@ -86,7 +86,7 @@ resource function 'Microsoft.Web/sites@2024-04-01' = {
   }
 }
 
-param insightsName string = 'binsights'
+param insightsName string = 'binsights${uniqueString(resourceGroup().id)}'
 
 resource appInsights 'Microsoft.Insights/components@2020-02-02' = {
   name: insightsName
