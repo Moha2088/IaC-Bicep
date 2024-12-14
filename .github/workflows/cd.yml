@@ -2,42 +2,18 @@ name: Deploy Bicep file
 
 env:
     rg: iacbicep
-    rg-location: northeurope
 
 on:
     push:
         branches: ["main"]    
     workflow_dispatch:
+    workflow_run:
+      workflows: [Validate Template]
+      types:
+        completed
 
 jobs:
-    validate-template:
-      runs-on: ubuntu-latest
-
-      steps:
-      - uses: actions/checkout@v4
-      - name: Login to Azure
-        uses: azure/login@v2.2.0
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-      - name: Create resource group
-        uses: azure/cli@v2.1.0
-        with:
-          inlineScript: |
-            az group create \
-            --name ${{ env.rg }} \
-            --location ${{ env.rg-location }}
-          
-      - name: Validate Template
-        uses: azure/cli@v2.1.0
-        with:
-          inlineScript: |
-            az deployment group validate \
-            --resource-group ${{ env.rg }} \
-            --template-file main.bicep
-
     deploy:
-      needs: validate-template
       runs-on: ubuntu-latest
 
       steps:
