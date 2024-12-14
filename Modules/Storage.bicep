@@ -1,7 +1,7 @@
 
 
 @description('Name of the storage account')
-param storageAccountName string = 'bstorage${uniqueString(resourceGroup().id)}'
+param storageAccountName string = 'bstorage-${uniqueString(resourceGroup().id)}'
 
 @description('Location of the resourcegroup')
 param location string
@@ -24,7 +24,7 @@ resource storage 'Microsoft.Storage/storageAccounts@2023-05-01' = {
 
 
 @description('Name of the Key Vault')
-param keyVaultName string = 'bvault${uniqueString(resourceGroup().id)}'
+param keyVaultName string = 'bvault-${uniqueString(resourceGroup().id)}'
 
 resource vault 'Microsoft.KeyVault/vaults@2023-07-01' = {
   location: location
@@ -42,7 +42,7 @@ resource vault 'Microsoft.KeyVault/vaults@2023-07-01' = {
 
 
 @description('Name of the AppServicePlan')
-param servicePlanName string = 'bplan${uniqueString(resourceGroup().id)}'
+param servicePlanName string = 'bplan-${uniqueString(resourceGroup().id)}'
 
 resource servicePlan 'Microsoft.Web/serverfarms@2024-04-01' = {
   location: location
@@ -54,7 +54,7 @@ resource servicePlan 'Microsoft.Web/serverfarms@2024-04-01' = {
 }
 
 @description('Name of the function')
-param functionName string = 'bfunction${uniqueString(resourceGroup().id)}'
+param functionName string = 'bfunction-${uniqueString(resourceGroup().id)}'
 
 resource function 'Microsoft.Web/sites@2024-04-01' = {
   name: functionName
@@ -86,7 +86,7 @@ resource function 'Microsoft.Web/sites@2024-04-01' = {
   }
 }
 
-param insightsName string = 'binsights${uniqueString(resourceGroup().id)}'
+param insightsName string = 'binsights-${uniqueString(resourceGroup().id)}'
 
 resource appInsights 'Microsoft.Insights/components@2020-02-02' = {
   name: insightsName
