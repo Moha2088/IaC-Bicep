@@ -37,4 +37,4 @@ jobs:
                 inlineScript: |
                     az deployment group validate \
                     --resource-group ${{ env.rg }} \
-                    --location ${{ env.rg-location }}
+                    --template-file main.bicep
