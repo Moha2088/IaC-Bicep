@@ -1,7 +1,7 @@
 
 
 @description('Name of the storage account')
-param storageAccountName string = 'bstorage-${uniqueString(resourceGroup().id)}'
+param storageAccountName string = 'bstor-${uniqueString(resourceGroup().id)}'
 
 @description('Location of the resourcegroup')
 param location string
@@ -54,7 +54,7 @@ resource servicePlan 'Microsoft.Web/serverfarms@2024-04-01' = {
 }
 
 @description('Name of the function')
-param functionName string = 'bfunction-${uniqueString(resourceGroup().id)}'
+param functionName string = 'bfunc${uniqueString(resourceGroup().id)}'
 
 resource function 'Microsoft.Web/sites@2024-04-01' = {
   name: functionName
