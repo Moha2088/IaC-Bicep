@@ -10,6 +10,10 @@ on:
         
     workflow_dispatch:
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
     validate-template:
         runs-on: ubuntu-latest
@@ -19,7 +23,9 @@ jobs:
             - name: Login to Azure
               uses: azure/login@v2.2.0
               with:
-                creds: ${{ secrets.AZURE_CREDENTIALS }}
+                client-id: ${{ secrets.CLIENT_ID }}
+                tenant-id: ${{ secrets.TENANT_ID }}
+                subscription-id: ${{ secrets.SUBSCRIPTION_ID }}
             
             - name: Create resource group
               uses: azure/cli@v2.1.0

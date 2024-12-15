@@ -8,16 +8,22 @@ on:
     push:
       branches: ["main"]
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
     deploy:
       runs-on: ubuntu-latest
 
       steps:
       - uses: actions/checkout@v4
-      - name: Login to Azure
+      - name: Login to Azures
         uses: azure/login@v2.2.0
         with:
-          creds: ${{secrets.AZURE_CREDENTIALS}}
+          client-id: ${{ secrets.CLIENT_ID }}
+          subscription-id: ${{ secrets.SUBSCRIPTION_ID }}
+          tenant-id: ${{ secrets.TENANT_ID }}
 
       - name: Deploy Bicep File
         uses: azure/cli@v2.1.0
